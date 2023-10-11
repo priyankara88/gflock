@@ -2,39 +2,67 @@ import { GiHamburgerMenu } from "react-icons/gi";
 import { BiSolidUser } from "react-icons/bi";
 import { BsCart3 } from "react-icons/bs";
 import { MdSearch } from "react-icons/md";
+import { Link, useLocation } from "react-router-dom";
+
+const MenueTitle = [
+  {
+    name: "Shop-Now",
+    value: "Shop Now",
+  },
+  {
+    name: "About-Us",
+    value: "About Us",
+  },
+  {
+    name: "Contact-Us",
+    value: "Contact Us",
+  },
+  {
+    name: "New-Arrival",
+    value: "NewArrival",
+  },
+];
 
 const Header = () => {
+  const Location = useLocation();
+
+  console.log("Location Data", Location);
+
   return (
     <div className=" sticky top-0 left-0 w-full bg-black p-5 text-orange-500 z-[100]">
       <div className="flex w-full">
         {/* MEnue Left Side */}
         <div className="flex items-center gap-x-6">
-          <GiHamburgerMenu size={17} />
-          <p className="">Shop Now</p>
-          <p>About Us</p>
-          <p>Contact Us</p>
+          <GiHamburgerMenu className="lg:hidden text-[25px]" />
+          <div className="hidden flex lg:block">
+            <nav>
+              {MenueTitle.map((ele) => {
+                return <Link to={`${"/" + ele.name}`}>{ele.value}</Link>;
+              })}
+            </nav>
+          </div>
         </div>
-
+        <div className="flex-1  max-lg:hidden " />
         {/* MEnue Right Side */}
         <div className="flex items-center gap-x-2">
-          <div className="flex-1 hidden lg:block " />
           <div className="flex w-[200px] bg-white items-center rounded-full px-3 py-2">
-            <MdSearch size={17} />
+            <MdSearch className="text-[25px]" />
             <input
               type="text"
               placeholder="search"
               className="w-full outline-none  text-xs"
             />
           </div>
-
-          <div className="flex-1 md:block" />
-          <div className="relative">
-            <BsCart3 size={17} />
-            <div className=" absolute rounded-full bg-red-700 -right-3 -top-3 p-1 px-[1px] py-[1px] w-4 h-4 ">
-              3
-            </div>
+          <div className="flex-1 block lg:block" />
+        </div>
+        <div className="flex-1 lg:hidden"></div>
+        <div className="relative flex items-center justify-center gap-3 ">
+          <BsCart3 className="text-[25px]" />
+          <div className=" flex absolute rounded-full bg-red-700 w-4 h-4 -top-1 justify-center items-center">
+            3
           </div>
-          <BiSolidUser size={17} />
+
+          <BiSolidUser className="text-[25px]" />
         </div>
       </div>
     </div>

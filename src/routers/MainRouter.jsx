@@ -9,6 +9,10 @@ const MainRouter = () => {
         <Routes>
           <Route path="/" Component={MainLayoute}>
             <Route index Component={Home} />
+            <Route path="Shop-Now" Component={Home} />
+            <Route path="About-Us" Component={Home} />
+            <Route path="Contact-Us" Component={Home} />
+            <Route path="New-Arrival" Component={Home} />
           </Route>
         </Routes>
       </BrowserRouter>

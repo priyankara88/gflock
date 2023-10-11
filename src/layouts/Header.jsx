@@ -19,14 +19,12 @@ const MenueTitle = [
   },
   {
     name: "New-Arrival",
-    value: "NewArrival",
+    value: "New Arrival",
   },
 ];
 
 const Header = () => {
-  const Location = useLocation();
-
-  console.log("Location Data", Location);
+  const { pathname } = useLocation();
 
   return (
     <div className=" sticky top-0 left-0 w-full bg-black p-5 text-orange-500 z-[100]">
@@ -34,10 +32,22 @@ const Header = () => {
         {/* MEnue Left Side */}
         <div className="flex items-center gap-x-6">
           <GiHamburgerMenu className="lg:hidden text-[25px]" />
-          <div className="hidden flex lg:block">
-            <nav>
+          <div className=" flex hidden lg:block ">
+            <nav className="flex gap-3 font-bold border-bt border-b-orange-500">
               {MenueTitle.map((ele) => {
-                return <Link to={`${"/" + ele.name}`}>{ele.value}</Link>;
+                return (
+                  <Link
+                    className={`${
+                      pathname === `/${ele.name}`
+                        ? "text-white"
+                        : "text-orange-500"
+                    }`}
+                    key={ele.name}
+                    to={`/${ele.name}`}
+                  >
+                    {ele.value}
+                  </Link>
+                );
               })}
             </nav>
           </div>
@@ -61,7 +71,6 @@ const Header = () => {
           <div className=" flex absolute rounded-full bg-red-700 w-4 h-4 -top-1 justify-center items-center">
             3
           </div>
-
           <BiSolidUser className="text-[25px]" />
         </div>
       </div>

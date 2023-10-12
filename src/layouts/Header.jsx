@@ -39,7 +39,7 @@ const Header = () => {
                   <Link
                     className={`${
                       pathname === `/${ele.name}`
-                        ? "text-white"
+                        ? "text-white border-b-4 border-orange-500"
                         : "text-orange-500"
                     }`}
                     key={ele.name}

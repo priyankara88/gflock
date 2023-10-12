@@ -5,6 +5,8 @@ import useFilter from "../../hooks/useFilter";
 const HomeCard = () => {
   const [filter, setFilter] = useFilter();
 
+  const ItemDelete = () => {};
+
   return (
     <div className="w-full">
       <div className="bg-neutral-300 w-full p-5">
@@ -18,7 +20,16 @@ const HomeCard = () => {
           </div>
         </div>
         <div className="flex gap-1 flex-wrap">
-          <FilterButton />
+          {Object.keys(filter).map((ele, index) => {
+            return (
+              <FilterButton
+                key={index}
+                arryKey={ele}
+                value={filter[ele]}
+                ItemDelete={ItemDelete}
+              />
+            );
+          })}
         </div>
       </div>
     </div>
@@ -27,12 +38,15 @@ const HomeCard = () => {
 
 export default HomeCard;
 
-const FilterButton = () => {
+const FilterButton = ({ arryKey, value, ItemDelete }) => {
   return (
     <div>
       <div className="flex border border-gray-700 rounded-full py-0 px-2  font-semibold from-neutral-600 items-center">
-        Size:UK4
-        <div className="flex w-[15px] h-[15px] rounded-full bg-slate-500 hover:bg-slate-700 items-center">
+        {arryKey}:{value}
+        <div
+          className="flex w-[15px] h-[15px] rounded-full bg-slate-500 hover:bg-slate-700 items-center"
+          onClick={ItemDelete}
+        >
           <IoClose className=" m-1 text-lg text-white " />
         </div>
       </div>

@@ -4,7 +4,6 @@ import useFilter from "../../hooks/useFilter";
 
 const HomeCard = () => {
   const [filter, setFilter] = useFilter();
-
   const ItemDelete = (delKey) => {
     console.log(delKey);
 
@@ -17,7 +16,7 @@ const HomeCard = () => {
           obj[ele] = temp[delKey];
         }
       });
-      console.log(obj);
+
       return obj;
     });
   };

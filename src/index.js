@@ -4,12 +4,15 @@ import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import FilterProvider from "./context/filterContext";
+import ColorProvider from "./context/ColorContext";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <FilterProvider>
-      <App />
+      <ColorProvider>
+        <App />
+      </ColorProvider>
     </FilterProvider>
   </React.StrictMode>
 );

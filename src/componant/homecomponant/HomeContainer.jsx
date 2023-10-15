@@ -21,10 +21,6 @@ const ColorFilter = () => {
   const [filter, setFilter] = useFilter();
   const [filterColor, setFilterColor] = useColor();
 
-  filterColor.map((val, index) => {
-    console.log(val[index].Color);
-  });
-
   return (
     <div className="w-full p-2">
       <h1 className="text-left text-lg font-semibold">Color</h1>
@@ -36,7 +32,7 @@ const ColorFilter = () => {
               <div className="flex w-fit  h-fit p-1 border-2 border-indigo-500 rounded-full items-center justify-center">
                 <div className="w-[20px] h-[20px] border-2 border-white rounded-full bg-red-700" />
               </div>
-              <p>{iColor[0].Color}</p>
+              <p>{iColor}</p>
             </div>
           );
         })}

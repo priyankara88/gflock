@@ -14,8 +14,12 @@ const HomeContainer = () => {
     });
   };
 
-  const SizeChange = (event) => {
-    console.log("size Change", event);
+  const SizeChange = (id) => {
+    setFilter((pre) => {
+      const temp = { ...pre };
+      temp["size"] = id;
+      return temp;
+    });
   };
 
   return (
@@ -27,7 +31,6 @@ const HomeContainer = () => {
           <hr />
           <FilterSize onChange={SizeChange} />
         </div>
-
         <div className="w-full bg-slate-800">container</div>
       </div>
     </div>
@@ -39,7 +42,6 @@ export default HomeContainer;
 const ColorFilter = ({ onclick }) => {
   const [filter, setFilter] = useFilter();
   const [filterColor, setFilterColor] = useColor();
-
   const newColor = Object.entries(filterColor.Color);
 
   return (
@@ -81,11 +83,12 @@ const FilterSize = ({ onChange }) => {
           <div
             className="flex gap-1 mt-2"
             key={index}
-            onChange={() => onChange()}
+            onChange={(e) => onChange(e.target.id)}
           >
             <div className=" flex w-fit h-fit rounded-full p-1  border-2 border-indigo-500 items-center">
               <input
                 name="radio"
+                id={ele[1]}
                 className="w-[20px] h-[20px] border-2  rounded-full"
                 type="radio"
               />

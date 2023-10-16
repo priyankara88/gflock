@@ -22,6 +22,14 @@ const HomeContainer = () => {
     });
   };
 
+  const ChangeCategory = (id) => {
+    setFilter((pre) => {
+      const temp = { ...pre };
+      temp["category"] = id;
+      return temp;
+    });
+  };
+
   return (
     <div className="w-full">
       {/* container break into two parts  */}
@@ -30,6 +38,8 @@ const HomeContainer = () => {
           <ColorFilter onclick={ColorChange} />
           <hr />
           <FilterSize onChange={SizeChange} />
+          <hr />
+          <CategoryFIlter onChange={ChangeCategory} />
         </div>
         <div className="w-full bg-slate-800">container</div>
       </div>
@@ -38,7 +48,7 @@ const HomeContainer = () => {
 };
 
 export default HomeContainer;
-
+// Color Componant
 const ColorFilter = ({ onclick }) => {
   const [filter, setFilter] = useFilter();
   const [filterColor, setFilterColor] = useColor();
@@ -71,7 +81,9 @@ const ColorFilter = ({ onclick }) => {
     </div>
   );
 };
+// End Color Componant
 
+// Sized Componant
 const FilterSize = ({ onChange }) => {
   const [filterColor, setFilterColor] = useColor();
   const newSize = Object.entries(filterColor.Size);
@@ -91,6 +103,36 @@ const FilterSize = ({ onChange }) => {
                 id={ele[1]}
                 className="w-[20px] h-[20px] border-2  rounded-full"
                 type="radio"
+              />
+            </div>
+            <p>{ele[1]}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+};
+
+// End Sized Componant
+
+const CategoryFIlter = ({ onChange }) => {
+  const [filterColor, setFilterColor] = useColor();
+  const iCategory = Object.entries(filterColor.Category);
+  return (
+    <div className="w-full mt-2 p-2">
+      <div className="grid grid-cols-1 lg:grid-col-[50%_50%]">
+        {iCategory.map((ele) => (
+          <div
+            className="flex gap-1 mt-2"
+            key={ele[0]}
+            onChange={(e) => onChange(e.target.id)}
+          >
+            <div className="flex w-fit h-fit p-1 border-2 border-indigo-500 rounded-full">
+              <input
+                name="Category"
+                type="radio"
+                id={ele[1]}
+                className="w-[20px] h-[20px] p-1 border-2 rounded-full"
               />
             </div>
             <p>{ele[1]}</p>

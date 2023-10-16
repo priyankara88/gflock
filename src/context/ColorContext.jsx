@@ -23,10 +23,24 @@ const Size = [
   "UK 18",
 ];
 
+const Category = [
+  "Work Wear",
+  "Dresses",
+  "Denims",
+  "Tops",
+  "Casuals",
+  "Gift her",
+  "Vouchers",
+  "Pants",
+  "Linen",
+  "Premium Dresses",
+];
+
 const ColorProvider = ({ children }) => {
   const [filterColor, setFilterColor] = useState({
     Color,
     Size,
+    Category,
   });
   return (
     <ColorContext.Provider value={{ filterColor, setFilterColor }}>

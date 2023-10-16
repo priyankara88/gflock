@@ -14,14 +14,21 @@ const HomeContainer = () => {
     });
   };
 
+  const SizeChange = (event) => {
+    console.log("size Change", event);
+  };
+
   return (
     <div className="w-full">
       {/* container break into two parts  */}
       <div className="w-full grid grid-cols-1 lg:grid-cols-[20%_80%] ">
         <div className="w-full">
           <ColorFilter onclick={ColorChange} />
+          <hr />
+          <FilterSize onChange={SizeChange} />
         </div>
-        <div className="w-full">container</div>
+
+        <div className="w-full bg-slate-800">container</div>
       </div>
     </div>
   );
@@ -33,12 +40,14 @@ const ColorFilter = ({ onclick }) => {
   const [filter, setFilter] = useFilter();
   const [filterColor, setFilterColor] = useColor();
 
+  const newColor = Object.entries(filterColor.Color);
+
   return (
     <div className="w-full p-2">
       <h1 className="text-left text-lg font-semibold">Color</h1>
       <div className="w-full grid grid-cols-1 lg:grid-cols-[50%_50%] mt-2">
         {/* left color */}
-        {filterColor.map((iColor, index) => {
+        {newColor.map((iColor, index) => {
           return (
             <div
               key={index}
@@ -47,15 +56,43 @@ const ColorFilter = ({ onclick }) => {
             >
               <div className="flex w-fit  h-fit p-1 border-2 border-indigo-500 rounded-full items-center justify-center">
                 <div
-                  className={`${iColor.code} w-[20px] h-[20px] border-2  rounded-full`}
-                  id={iColor.name}
+                  className={`${iColor[1].code} w-[20px] h-[20px] border-2  rounded-full`}
+                  id={iColor[1].name}
                 />
               </div>
 
-              <p>{iColor.name}</p>
+              <p>{iColor[1].name}</p>
             </div>
           );
         })}
+      </div>
+    </div>
+  );
+};
+
+const FilterSize = ({ onChange }) => {
+  const [filterColor, setFilterColor] = useColor();
+  const newSize = Object.entries(filterColor.Size);
+  return (
+    <div className="w-full p-2 ">
+      <h1 className="text-left text-lg font-semibold">Size</h1>
+      <div className="grid gap-1 w-full mt-2  grid-cols-1 lg:grid-cols-[50%_50%] ">
+        {newSize.map((ele, index) => (
+          <div
+            className="flex gap-1 mt-2"
+            key={index}
+            onChange={() => onChange()}
+          >
+            <div className=" flex w-fit h-fit rounded-full p-1  border-2 border-indigo-500 items-center">
+              <input
+                name="radio"
+                className="w-[20px] h-[20px] border-2  rounded-full"
+                type="radio"
+              />
+            </div>
+            <p>{ele[1]}</p>
+          </div>
+        ))}
       </div>
     </div>
   );

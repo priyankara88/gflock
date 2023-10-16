@@ -5,15 +5,14 @@ import useFilter from "../../hooks/useFilter";
 const HomeCard = () => {
   const [filter, setFilter] = useFilter();
   const ItemDelete = (delKey) => {
-    console.log(delKey);
-
     setFilter((pre) => {
       const temp = { ...pre };
       const obj = {};
 
       Object.keys(temp).map((ele, index) => {
         if (ele !== delKey) {
-          obj[ele] = temp[delKey];
+          console.log("key", temp[ele]);
+          obj[ele] = temp[ele];
         }
       });
 

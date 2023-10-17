@@ -1,5 +1,7 @@
+import { useState } from "react";
 import { useColor } from "../../context/ColorContext";
 import useFilter from "../../hooks/useFilter";
+import { Box, Slider } from "@mui/material";
 
 const HomeContainer = () => {
   const [filter, setFilter] = useFilter();
@@ -40,6 +42,8 @@ const HomeContainer = () => {
           <FilterSize onChange={SizeChange} />
           <hr />
           <CategoryFIlter onChange={ChangeCategory} />
+          <hr />
+          <PriceFilter />
         </div>
         <div className="w-full bg-slate-800">container</div>
       </div>
@@ -97,7 +101,7 @@ const FilterSize = ({ onChange }) => {
             key={index}
             onChange={(e) => onChange(e.target.id)}
           >
-            <div className=" flex w-fit h-fit rounded-full p-1  border-2 border-indigo-500 items-center">
+            <div className=" flex w-fit h-fit rounded-full p-1 hover:border-2   border-indigo-500 items-center">
               <input
                 name="radio"
                 id={ele[1]}
@@ -115,11 +119,13 @@ const FilterSize = ({ onChange }) => {
 
 // End Sized Componant
 
+//Category Componant
 const CategoryFIlter = ({ onChange }) => {
   const [filterColor, setFilterColor] = useColor();
   const iCategory = Object.entries(filterColor.Category);
   return (
     <div className="w-full mt-2 p-2">
+      <h1 className="text-left text-lg font-semibold">Category</h1>
       <div className="grid grid-cols-1 lg:grid-col-[50%_50%]">
         {iCategory.map((ele) => (
           <div
@@ -138,6 +144,48 @@ const CategoryFIlter = ({ onChange }) => {
             <p>{ele[1]}</p>
           </div>
         ))}
+      </div>
+    </div>
+  );
+};
+
+//End Category Componant
+
+//Price Componant
+
+const PriceFilter = () => {
+  const [filter, setFilter] = useFilter();
+  const [price, setPrice] = useState([20, 37]);
+  const handleChange = (event, newValue) => {
+    console.log("newValue", newValue);
+    setPrice(newValue);
+    setFilter((pre) => {
+      const temp = { ...pre };
+
+      console.log("price", price[0]);
+      temp["price"] = `${price[0] + "-" + price[1]} `;
+      return temp;
+    });
+  };
+
+  const valuetext = (valuetext) => {
+    console.log("valuetext", valuetext);
+    return valuetext;
+  };
+
+  return (
+    <div className="p-2 w-full">
+      <div className="text-left text-lg font-semibold">Price Range (LKR)</div>
+      <div className="flex p-3">
+        <Box sx={{ width: 300 }}>
+          <Slider
+            getAriaLabel={() => "Temperature range"}
+            value={price}
+            onChange={handleChange}
+            valueLabelDisplay="auto"
+            getAriaValueText={valuetext}
+          />
+        </Box>
       </div>
     </div>
   );

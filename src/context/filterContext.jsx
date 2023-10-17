@@ -7,6 +7,7 @@ const FilterProvider = ({ children }) => {
     color: "black",
     size: "uk 4",
     category: "Denim",
+    price: "0-1000",
   });
   return (
     <FilterContext.Provider value={{ filter, setFilter }}>

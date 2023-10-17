@@ -21,7 +21,7 @@ const HomeCard = () => {
   };
 
   return (
-    <div className="w-full">
+    <div className="w-full px-[70px] mt-2">
       <div className="bg-neutral-300 w-full p-5">
         <div className="w-full flex">
           <div className="text-white font-bold ">

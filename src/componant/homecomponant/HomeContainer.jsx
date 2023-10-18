@@ -48,12 +48,6 @@ const HomeContainer = () => {
         <div className="w-full bg-white">
           <div className="w-full m-4 grid grid-cols-1 md:grid-cols-[50%_50%] lg:grid-cols-[25%_25%_25%_25%]">
             <ItemCard />
-            <ItemCard />
-            <ItemCard />
-            <ItemCard />
-            <ItemCard />
-            <ItemCard />
-            <ItemCard />
           </div>
         </div>
       </div>
@@ -173,7 +167,7 @@ const CategoryFIlter = ({ onChange }) => {
 
 const PriceFilter = () => {
   const [filter, setFilter] = useFilter();
-  const [price, setPrice] = useState([20, 37]);
+  const [price, setPrice] = useState([2000, 37000]);
   const handleChange = (event, newValue) => {
     setFilter((pre) => {
       const temp = { ...pre };
@@ -208,16 +202,27 @@ const PriceFilter = () => {
 
 const ItemCard = () => {
   return (
-    <div className="w-full mt-2">
-      <div className="flex  items-center justify-center w-60 h-[308px] border-2 border-gray-400 bg-slate-300">
+    <div className="w-full mt-2 group">
+      <div className="flex relative items-center justify-center w-60 h-[308px]  bg-slate-300">
         <img
           src="https://lk-kellyfelder.s3.ap-southeast-1.amazonaws.com/products/d8b1f1d6083e3067188a77d54a814db949cbf3dd.jpg"
           alt="test"
         />
+        <ItemAddButton />
       </div>
       <p className="mt-1">Front Knot Detail WW Dress</p>
       <p className="mt-1">LKR 5941.50 LKR 6990.00</p>
       <div className="flex items-center w-[25px] h-[25px] border-2 rounded-full mt-1 bg-red-700"></div>
+    </div>
+  );
+};
+
+const ItemAddButton = () => {
+  return (
+    <div className=" hidden group-hover:flex cursor-pointer w-full flex flex-col items-center justify-center bottom-12 left-0 absolute z-90">
+      <div className="w-44 h-10 text-center flex items-center justify-center  text-black border-2 font-semibold bg-white">
+        ADD TO BAG
+      </div>
     </div>
   );
 };

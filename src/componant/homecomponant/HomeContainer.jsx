@@ -2,10 +2,16 @@ import { useState } from "react";
 import { useColor } from "../../context/ColorContext";
 import useFilter from "../../hooks/useFilter";
 import { Box, Slider } from "@mui/material";
+import { ItemFetch } from "../../libs/shoppingitem";
+import { BsHeart } from "react-icons/bs";
 
 const HomeContainer = () => {
   const [filter, setFilter] = useFilter();
   const [filterColor, setFilterColor] = useColor();
+  const ItemCardData = Object.entries(ItemFetch);
+
+  // console.log("ItemCardData", ItemCardData[0].productcolor);
+
   const ColorChange = (event) => {
     setFilter((pre) => {
       const temp = { ...pre };
@@ -46,8 +52,16 @@ const HomeContainer = () => {
           <PriceFilter />
         </div>
         <div className="w-full bg-white">
-          <div className="w-full m-4 grid grid-cols-1 md:grid-cols-[50%_50%] lg:grid-cols-[25%_25%_25%_25%]">
-            <ItemCard />
+          <div className="w-full m-4 grid grid-cols-1 max-md:grid-cols-[50%_50%] lg:grid-cols-[25%_25%_25%_25%]">
+            {ItemCardData.map((ele, index) => (
+              <ItemCard
+                key={index}
+                title={ele[1].productTitle}
+                price={ele[1].productPrice}
+                img={ele[1].productImage}
+                stock={ele[1].productStock}
+              />
+            ))}
           </div>
         </div>
       </div>
@@ -167,7 +181,7 @@ const CategoryFIlter = ({ onChange }) => {
 
 const PriceFilter = () => {
   const [filter, setFilter] = useFilter();
-  const [price, setPrice] = useState([2000, 37000]);
+  const [price, setPrice] = useState([1000, 100000]);
   const handleChange = (event, newValue) => {
     setFilter((pre) => {
       const temp = { ...pre };
@@ -200,29 +214,67 @@ const PriceFilter = () => {
 
 //End Price Container
 
-const ItemCard = () => {
+//Item Card
+
+const ItemCard = ({ title, price, img, stock }) => {
   return (
-    <div className="w-full mt-2 group">
-      <div className="flex relative items-center justify-center w-60 h-[308px]  bg-slate-300">
-        <img
-          src="https://lk-kellyfelder.s3.ap-southeast-1.amazonaws.com/products/d8b1f1d6083e3067188a77d54a814db949cbf3dd.jpg"
-          alt="test"
-        />
-        <ItemAddButton />
+    <div className="w-full relative  ">
+      <div className="w-full group">
+        <div className="flex relative items-center justify-center w-60 h-[308px] mt-2 bg-slate-300">
+          <img src={img} alt="test" />
+          <ItemAddButton />
+          <LastItemMsg prostk={stock} />
+        </div>
+        <div className="w-[40px] h-[40px] p-1 absolute top-5 right-12 z-40 cursor-pointer flex item-center justify-center border bg-stone-100 hover:bg-white rounded-full">
+          <BsHeart className=" flex text-center justify-center mt-[5px] text-[20px] text-black hover:text-orange-500" />
+        </div>
       </div>
-      <p className="mt-1">Front Knot Detail WW Dress</p>
-      <p className="mt-1">LKR 5941.50 LKR 6990.00</p>
-      <div className="flex items-center w-[25px] h-[25px] border-2 rounded-full mt-1 bg-red-700"></div>
+      <p className="mt-1">{title}</p>
+      <p className="mt-1">{price}</p>
+
+      <div
+        className="flex p-1 items-center w-fit h-fit
+       border-2 rounded-full mt-1"
+      >
+        <div className="w-[20px] h-[20px] border-2 rounded-full bg-yellow-400"></div>
+      </div>
     </div>
   );
 };
 
+//End Item Card
+
+//Item Card Add to box button
 const ItemAddButton = () => {
   return (
     <div className=" hidden group-hover:flex cursor-pointer w-full flex flex-col items-center justify-center bottom-12 left-0 absolute z-90">
-      <div className="w-44 h-10 text-center flex items-center justify-center  text-black border-2 font-semibold bg-white">
+      <div className="w-44 h-10 text-center flex items-center justify-center  text-black border-2 font-semibold bg-white opacity-95">
         ADD TO BAG
       </div>
     </div>
   );
 };
+
+//End
+//Item Card Add to box button
+
+//
+//Item Card Last Item Card
+const LastItemMsg = ({ prostk }) => {
+  return (
+    <div className="w-full absolute ">
+      <div
+        className={`${
+          prostk <= "3"
+            ? "flex w-20 h-8 bg-green-500 opacity-95  items-center justify-center text-white"
+            : "hidden"
+        }  `}
+      >
+        <p className="text-sm font-semibold">
+          {prostk === "1" ? "Last Item" : `Last ${prostk} Items`}
+        </p>
+      </div>
+    </div>
+  );
+};
+//End Item Card Last Item Card

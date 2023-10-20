@@ -9,6 +9,12 @@ const Color = [
   { name: "Yellow", code: "bg-yellow-500" },
   { name: "Green", code: "bg-green-500" },
   { name: "Orange", code: "bg-orange-500" },
+  { name: "Lime", code: "bg-lime-600" },
+  { name: "Teal", code: "bg-teal-500" },
+  { name: "Stone", code: "bg-stone-700" },
+  { name: "Gray", code: "bg-gray-500" },
+  { name: "Blue", code: "bg-blue-700" },
+  { name: "Amber", code: "bg-amber-700" },
 ];
 
 const Size = [

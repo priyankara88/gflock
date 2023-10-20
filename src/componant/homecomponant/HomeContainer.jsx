@@ -76,7 +76,9 @@ const ColorFilter = ({ onclick }) => {
   const [filterColor, setFilterColor] = useColor();
   const newColor = Object.entries(filterColor.Color);
 
-  console.log("newColor", filter.color);
+  const HandleClickEvent = () => {
+    console.log("Handle Click Event");
+  };
 
   return (
     <div className="w-full p-2">
@@ -107,6 +109,9 @@ const ColorFilter = ({ onclick }) => {
             </div>
           );
         })}
+      </div>
+      <div onClick={HandleClickEvent} className="cursor-pointer">
+        <p className="text-base font-bold">More Color</p>
       </div>
     </div>
   );

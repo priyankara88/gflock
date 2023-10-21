@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { useColor } from "../../context/ColorContext";
 import useFilter from "../../hooks/useFilter";
 import { Box, Slider } from "@mui/material";
@@ -76,8 +76,26 @@ const ColorFilter = ({ onclick }) => {
   const [filterColor, setFilterColor] = useColor();
   const newColor = Object.entries(filterColor.Color);
 
+  const [initialColor, setinitialColor] = useState(newColor.slice(0, 7));
+  const GetColorRef = useRef();
+
   const HandleClickEvent = () => {
-    console.log("Handle Click Event");
+    if (GetColorRef.current.innerText === "+ More Color") {
+      setinitialColor((pre) => {
+        const temp = [...pre];
+        const newMoreColor = temp.concat(newColor.slice(7));
+
+        GetColorRef.current.innerText = "- Less";
+        return newMoreColor;
+      });
+    } else {
+      setinitialColor((pre) => {
+        const temp = [...pre];
+        const Less = temp.slice(0, 7);
+        GetColorRef.current.innerText = "+ More Color";
+        return Less;
+      });
+    }
   };
 
   return (
@@ -85,7 +103,7 @@ const ColorFilter = ({ onclick }) => {
       <h1 className="text-left text-lg font-semibold">Color</h1>
       <div className="w-full grid grid-cols-1 lg:grid-cols-[50%_50%] mt-2">
         {/* left color */}
-        {newColor.map((iColor, index) => {
+        {initialColor.map((iColor, index) => {
           return (
             <div
               key={index}
@@ -110,9 +128,14 @@ const ColorFilter = ({ onclick }) => {
           );
         })}
       </div>
-      <div onClick={HandleClickEvent} className="cursor-pointer">
-        <p className="text-base font-bold">More Color</p>
-      </div>
+
+      <p
+        ref={GetColorRef}
+        onClick={HandleClickEvent}
+        className="text-base font-bold cursor-pointer"
+      >
+        + More Color
+      </p>
     </div>
   );
 };

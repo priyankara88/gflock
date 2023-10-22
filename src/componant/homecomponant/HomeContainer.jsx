@@ -132,7 +132,7 @@ const ColorFilter = ({ onclick }) => {
       <p
         ref={GetColorRef}
         onClick={HandleClickEvent}
-        className="text-base font-bold cursor-pointer"
+        className="text-base font-bold cursor-pointer mt-2"
       >
         + More Color
       </p>
@@ -145,11 +145,33 @@ const ColorFilter = ({ onclick }) => {
 const FilterSize = ({ onChange }) => {
   const [filterColor, setFilterColor] = useColor();
   const newSize = Object.entries(filterColor.Size);
+  const [initialSize, setinitialSize] = useState(newSize.slice(0, 5));
+  const SelectSize = useRef();
+
+  const ViewMoreSize = () => {
+    if (SelectSize.current.innerText === "+ More Size") {
+      setinitialSize((pre) => {
+        const temp = [...pre];
+        const iSize = temp.concat(newSize.slice(6));
+        SelectSize.current.innerText = "- Less";
+        return iSize;
+      });
+    } else {
+      setinitialSize((pre) => {
+        const temp = [...pre];
+        const iLess = temp.slice(0, 5);
+        console.log("iLess", iLess);
+        SelectSize.current.innerText = "+ More Size";
+        return iLess;
+      });
+    }
+  };
+
   return (
     <div className="w-full p-2 ">
       <h1 className="text-left text-lg font-semibold">Size</h1>
       <div className="grid gap-1 w-full mt-2  grid-cols-1 lg:grid-cols-[50%_50%] ">
-        {newSize.map((ele, index) => (
+        {initialSize.map((ele, index) => (
           <div
             className="flex gap-1 mt-2"
             key={index}
@@ -167,6 +189,13 @@ const FilterSize = ({ onChange }) => {
           </div>
         ))}
       </div>
+      <p
+        ref={SelectSize}
+        onClick={ViewMoreSize}
+        className="text-base font-bold cursor-pointer mt-2"
+      >
+        + More Size
+      </p>
     </div>
   );
 };

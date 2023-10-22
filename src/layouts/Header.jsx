@@ -10,8 +10,8 @@ const MenueTitle = [
     value: "Shop Now",
   },
   {
-    name: "About-Us",
-    value: "About Us",
+    name: "Single-Product",
+    value: "SingleProduct",
   },
   {
     name: "Contact-Us",

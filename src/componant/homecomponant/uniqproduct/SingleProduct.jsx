@@ -6,7 +6,7 @@ const SingleProduct = () => {
           aaa
         </div>
 
-        <div className="w-[60%] h-[auto] border-2 border-red-500">b</div>
+        <div className="w-[80%] h-[auto] border-2 border-red-500">b</div>
       </div>
       <div className="w-full flex border-2 border-green-700">
         <div>a</div>

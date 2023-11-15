@@ -32,7 +32,7 @@ const Header = () => {
         {/* MEnue Left Side */}
         <div className="flex items-center gap-x-6">
           <GiHamburgerMenu className="lg:hidden text-[25px]" />
-          <div className=" flex hidden lg:block ">
+          <div className="  hidden lg:block ">
             <nav className="flex gap-3 font-bold border-bt border-b-orange-500">
               {MenueTitle.map((ele) => {
                 return (

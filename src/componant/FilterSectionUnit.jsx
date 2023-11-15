@@ -74,17 +74,25 @@ const FilterSectionUnit = ({ Dataset, title, limit }) => {
 export default FilterSectionUnit;
 
 const CommanFilter = ({ uniqData, filterData, title }) => {
+  console.log("sadadadasd", filterData.color);
+  console.log("cccc", uniqData[1].name);
   return (
     <>
-      <div className="w-fit h-fit border-[0.5px] border-black rounded-full p-1">
+      <div
+        className={`${
+          filterData.color == uniqData[1].name
+            ? "w-fit h-fit border-[2px] border-gray-800 rounded-full p-1"
+            : "w-fit h-fit border-[0.5px] border-gray-600 rounded-full p-1"
+        }`}
+      >
         {title === "color" ? (
           <div
-            className={`${uniqData[1].code} w-[17px] h-[17px] border-[0.5px]  rounded-full`}
+            className={`${uniqData[1].code}  w-[17px] h-[17px] border-[0.5px]  rounded-full`}
             id={uniqData[1].name}
           />
         ) : (
           <div
-            className={` w-[17px] h-[17px] border-[0.5px] border-white rounded-full`}
+            className={`filterData.color == uniqData[1].name w-[17px] h-[17px] border-[0.5px] border-white rounded-full`}
             id={uniqData[1].name}
           />
         )}

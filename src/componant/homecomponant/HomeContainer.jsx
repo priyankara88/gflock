@@ -54,7 +54,7 @@ const HomeContainer = () => {
           <FilterSectionUnit
             Dataset={Object.entries(filterColor.Size)}
             title={"size"}
-            limit={10}
+            limit={8}
           />
           <hr />
           <FilterSectionUnit

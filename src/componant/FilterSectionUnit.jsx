@@ -7,7 +7,7 @@ const FilterSectionUnit = ({ Dataset, title, limit }) => {
   const GetColorRef = useRef();
 
   const SelectedData = (value) => {
-    console.log("value", value);
+    console.log("valuerrrrrrrrrrr", value);
     setFilter((pre) => {
       const temp = { ...pre };
       temp[title] = value;
@@ -16,7 +16,7 @@ const FilterSectionUnit = ({ Dataset, title, limit }) => {
   };
   //test
   const HandleClickEvent = () => {
-    if (GetColorRef.current.innerText === "+ More Color") {
+    if (GetColorRef.current.innerText === "+ View more") {
       setinitialData((pre) => {
         const temp = [...pre];
         const newMoreColor = temp.concat(Dataset.slice(limit));
@@ -27,7 +27,7 @@ const FilterSectionUnit = ({ Dataset, title, limit }) => {
       setinitialData((pre) => {
         const temp = [...pre];
         const Less = temp.slice(0, limit);
-        GetColorRef.current.innerText = "+ More Color";
+        GetColorRef.current.innerText = "+ View more";
         return Less;
       });
     }
@@ -35,7 +35,7 @@ const FilterSectionUnit = ({ Dataset, title, limit }) => {
   return (
     <div>
       <div className="w-full p-2">
-        <h1 className="text-left text-lg font-semibold">{title}</h1>
+        <h1 className="text-left text-lg font-semibold mb-4">{title}</h1>
         <div
           className={`${
             title == "Category"
@@ -47,6 +47,7 @@ const FilterSectionUnit = ({ Dataset, title, limit }) => {
             return (
               <div
                 key={index}
+                id={uniqData.id}
                 className="flex w-full gap-1 mt-1 cursor-pointer"
                 onClick={(e) => SelectedData(e.target.id)}
               >
@@ -62,9 +63,9 @@ const FilterSectionUnit = ({ Dataset, title, limit }) => {
         <p
           ref={GetColorRef}
           onClick={HandleClickEvent}
-          className="text-base font-bold cursor-pointer mt-2"
+          className="text-base font-bold cursor-pointer mt-2 text-[10px]"
         >
-          + More Color
+          + View more
         </p>
       </div>
     </div>
@@ -74,14 +75,15 @@ const FilterSectionUnit = ({ Dataset, title, limit }) => {
 export default FilterSectionUnit;
 
 const CommanFilter = ({ uniqData, filterData, title }) => {
-  console.log("sadadadasd", filterData.color);
-  console.log("cccc", uniqData[1].name);
+  console.log("filterData.size", filterData.size);
+  console.log("uniqData[1].name", uniqData[1].name);
   return (
     <>
       <div
+        id={uniqData[1].name}
         className={`${
           filterData.color == uniqData[1].name
-            ? "w-fit h-fit border-[2px] border-gray-800 rounded-full p-1"
+            ? "w-fit h-fit border-[0.5px] border-blue-600 rounded-full p-1"
             : "w-fit h-fit border-[0.5px] border-gray-600 rounded-full p-1"
         }`}
       >
@@ -90,15 +92,32 @@ const CommanFilter = ({ uniqData, filterData, title }) => {
             className={`${uniqData[1].code}  w-[17px] h-[17px] border-[0.5px]  rounded-full`}
             id={uniqData[1].name}
           />
-        ) : (
+        ) : title === "size" ? (
           <div
-            className={`filterData.color == uniqData[1].name w-[17px] h-[17px] border-[0.5px] border-white rounded-full`}
+            className={`${
+              filterData.size === uniqData[1].name
+                ? "w-[17px] h-[17px] border-[0.5px] b rounded-full bg-slate-500"
+                : "w-[17px] h-[17px] border-[0.5px] b rounded-full border-white"
+            }  `}
             id={uniqData[1].name}
           />
+        ) : title === "category" ? (
+          <div
+            className={`${
+              filterData.category === uniqData[1].name
+                ? "w-[17px] h-[17px] border-[0.5px] b rounded-full bg-slate-500"
+                : "w-[17px] h-[17px] border-[0.5px] b rounded-full border-white"
+            }  `}
+            id={uniqData[1].name}
+          />
+        ) : (
+          ""
         )}
       </div>
 
-      <p>{uniqData[1].name}</p>
+      <p id={uniqData[1].name} className="hover:text-gray-400">
+        {uniqData[1].name}
+      </p>
     </>
   );
 };

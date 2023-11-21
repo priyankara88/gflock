@@ -1,9 +1,16 @@
 import { TbFilterFilled } from "react-icons/tb";
 import { IoClose } from "react-icons/io5";
 import useFilter from "../../hooks/useFilter";
+import { useState } from "react";
+import PopupModel from "../mui/PopupModel";
 
 const HomeCard = () => {
   const [filter, setFilter] = useFilter();
+  const [model, setModelOpen] = useState(false);
+
+  const modalHandleClose = () => setModelOpen(false);
+  const modalHandleOpen = () => setModelOpen(true);
+
   const ItemDelete = (delKey) => {
     setFilter((pre) => {
       const temp = { ...pre };
@@ -28,7 +35,10 @@ const HomeCard = () => {
             Dresses <span className="text-sm font-normal">(358 Products)</span>
           </div>
           <div className="flex-1" />
-          <div className="flex justify-center items-center mt-2 text-slate-900 lg:hidden">
+          <div
+            onClick={modalHandleOpen}
+            className="flex justify-center items-center mt-2 text-slate-900 lg:hidden"
+          >
             <TbFilterFilled color="gray" />
           </div>
         </div>
@@ -45,6 +55,7 @@ const HomeCard = () => {
           })}
         </div>
       </div>
+      <PopupModel open={model} handleClose={modalHandleClose} />
     </div>
   );
 };

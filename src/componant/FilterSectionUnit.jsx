@@ -38,7 +38,7 @@ const FilterSectionUnit = ({ Dataset, title, limit }) => {
         <h1 className="text-left text-lg font-semibold mb-4">{title}</h1>
         <div
           className={`${
-            title == "Category"
+            title == "category"
               ? "w-full grid grid-cols-1 lg:grid-cols-1 mt-2"
               : "w-full grid grid-cols-1 lg:grid-cols-[50%_50%] mt-2"
           }`}
@@ -48,7 +48,7 @@ const FilterSectionUnit = ({ Dataset, title, limit }) => {
               <div
                 key={index}
                 id={uniqData.id}
-                className="flex w-full gap-1 mt-1 cursor-pointer"
+                className="flex w-full gap-2 mt-2 cursor-pointer"
                 onClick={(e) => SelectedData(e.target.id)}
               >
                 <CommanFilter

@@ -1,10 +1,12 @@
 import { TbFilterFilled } from "react-icons/tb";
 import { IoClose } from "react-icons/io5";
+import { IoMdCloseCircleOutline } from "react-icons/io";
 import useFilter from "../../hooks/useFilter";
 import { useState } from "react";
 import PopupModel from "../mui/PopupModel";
 
-const HomeCard = () => {
+const HomeCard = ({ mobileFIlter }) => {
+  console.log("mobileFIlter", mobileFIlter);
   const [filter, setFilter] = useFilter();
   const [model, setModelOpen] = useState(false);
 
@@ -28,7 +30,11 @@ const HomeCard = () => {
   };
 
   return (
-    <div className="w-full px-[70px] mt-2">
+    <div
+      className={`${
+        mobileFIlter == true ? "w-full " : "w-full px-[70px] mt-2"
+      }   `}
+    >
       <div className="bg-neutral-300 w-full p-5">
         <div className="w-full flex">
           <div className="text-white font-bold ">
@@ -39,7 +45,14 @@ const HomeCard = () => {
             onClick={modalHandleOpen}
             className="flex justify-center items-center mt-2 text-slate-900 lg:hidden"
           >
-            <TbFilterFilled color="gray" />
+            {mobileFIlter == false ? (
+              <IoMdCloseCircleOutline
+                className="text-2xl text-gray-700"
+                onClick={modalHandleClose}
+              />
+            ) : (
+              <TbFilterFilled color="gray" />
+            )}
           </div>
         </div>
         <div className="flex gap-1 flex-wrap">

@@ -1,13 +1,12 @@
 import { useRef, useState } from "react";
 import useFilter from "../hooks/useFilter";
 
-const FilterSectionUnit = ({ Dataset, title, limit }) => {
+const FilterSectionUnit = ({ Dataset, title, limit, isMobile }) => {
   const [filter, setFilter] = useFilter();
   const [initialData, setinitialData] = useState(Dataset.slice(0, limit));
   const GetColorRef = useRef();
-
+  console.log("valuerrrrrrrrrrr", isMobile);
   const SelectedData = (value) => {
-    console.log("valuerrrrrrrrrrr", value);
     setFilter((pre) => {
       const temp = { ...pre };
       temp[title] = value;
@@ -35,12 +34,22 @@ const FilterSectionUnit = ({ Dataset, title, limit }) => {
   return (
     <div>
       <div className="w-full p-2">
-        <h1 className="text-left text-lg font-semibold mb-4">{title}</h1>
+        <h1
+          className={`${
+            isMobile == true ? "hidden" : "text-left text-lg font-semibold mb-4"
+          }`}
+        >
+          {title}
+        </h1>
         <div
           className={`${
             title == "category"
               ? "w-full grid grid-cols-1 lg:grid-cols-1 mt-2"
-              : "w-full grid grid-cols-1 lg:grid-cols-[50%_50%] mt-2"
+              : `${
+                  isMobile == true
+                    ? "w-full grid grid-cols-2 lg:grid-cols-[50%_50%] mt-2"
+                    : "w-full grid grid-cols-1 lg:grid-cols-[50%_50%] mt-2"
+                }`
           }`}
         >
           {initialData.map((uniqData, index) => {
@@ -55,6 +64,7 @@ const FilterSectionUnit = ({ Dataset, title, limit }) => {
                   uniqData={uniqData}
                   filterData={filter}
                   title={title}
+                  mobile={isMobile}
                 />
               </div>
             );
@@ -74,7 +84,7 @@ const FilterSectionUnit = ({ Dataset, title, limit }) => {
 
 export default FilterSectionUnit;
 
-const CommanFilter = ({ uniqData, filterData, title }) => {
+const CommanFilter = ({ uniqData, filterData, title, mobile }) => {
   console.log("filterData.size", filterData.size);
   console.log("uniqData[1].name", uniqData[1].name);
   return (

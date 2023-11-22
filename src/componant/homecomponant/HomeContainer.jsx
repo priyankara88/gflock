@@ -57,9 +57,9 @@ const Card = () => {
             />
           </div>
         </div>
-        <div className="flex w-full h-full absolute top-0 left-0 flex-col items-center justify-end  ">
+        <div className=" flex w-full h-full absolute top-0 left-0 flex-col items-center justify-end  ">
           {buttonflag === true ? (
-            <button className="mb-10 px-5 py-1 bg-white rounded-md opacity-80 font-semibold ">
+            <button className=" mb-10 px-5 py-1 bg-white rounded-md opacity-80 font-semibold ">
               ADD TO BAG
             </button>
           ) : (

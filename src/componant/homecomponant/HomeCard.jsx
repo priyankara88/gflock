@@ -37,8 +37,9 @@ const HomeCard = ({ mobileFIlter }) => {
     >
       <div className="bg-neutral-300 w-full p-5">
         <div className="w-full flex">
-          <div className="text-white font-bold ">
-            Dresses <span className="text-sm font-normal">(358 Products)</span>
+          <div className="text-white font-semibold text-2xl ">
+            New Arrivel
+            <span className="text-sm font-normal">(358 Products)</span>
           </div>
           <div className="flex-1" />
           <div

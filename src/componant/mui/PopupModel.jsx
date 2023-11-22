@@ -8,7 +8,7 @@ const mTab = ["color", "size", "category", "price"];
 
 const PopupModel = ({ open, handleClose }) => {
   const [filterColor, setFilterColor] = useColor();
-  const [selectTab, setSelecTab] = useState(mTab);
+  const [selectTab, setSelecTab] = useState(mTab[0]);
 
   const tabHandler = (value) => {
     setSelecTab(value.innerHTML);
@@ -38,31 +38,47 @@ const PopupModel = ({ open, handleClose }) => {
                   );
                 })}
               </div>
-              {selectTab === "color" ? (
-                <div>
-                  <FilterSectionUnit
-                    Dataset={Object.entries(filterColor.Color)}
-                    title={"color"}
-                    limit={10}
-                    isMobile={true}
-                  />
-                </div>
-              ) : selectTab == "size" ? (
-                <div>
-                  <FilterSectionUnit
-                    Dataset={Object.entries(filterColor.Size)}
-                    title={"size"}
-                    limit={8}
-                    isMobile={true}
-                  />
-                </div>
-              ) : selectTab == "category" ? (
-                <div>test3</div>
-              ) : selectTab == "price" ? (
-                <div>test4</div>
-              ) : (
-                ""
-              )}
+
+              <div
+                className={`${
+                  selectTab == mTab[0] ? "block bg-slate-300" : "hidden"
+                }`}
+              >
+                <FilterSectionUnit
+                  Dataset={Object.entries(filterColor.Color)}
+                  title={"color"}
+                  limit={10}
+                  isMobile={true}
+                />
+              </div>
+
+              <div
+                className={`${
+                  selectTab == mTab[1] ? "block bg-slate-300" : "hidden"
+                }`}
+              >
+                <FilterSectionUnit
+                  Dataset={Object.entries(filterColor.Size)}
+                  title={"size"}
+                  limit={8}
+                  isMobile={true}
+                />
+              </div>
+
+              <div
+                className={`${
+                  selectTab == mTab[2] ? "block bg-slate-300" : "hidden"
+                }`}
+              >
+                <FilterSectionUnit
+                  Dataset={Object.entries(filterColor.Category)}
+                  title={"category"}
+                  limit={6}
+                  isMobile={true}
+                />
+              </div>
+              {/*
+              <div>test4</div> */}
             </div>
           </div>
         </Modal>

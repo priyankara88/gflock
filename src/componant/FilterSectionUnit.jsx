@@ -93,7 +93,7 @@ const CommanFilter = ({ uniqData, filterData, title, mobile }) => {
         id={uniqData[1].name}
         className={`${
           filterData.color == uniqData[1].name
-            ? "w-fit h-fit border-[0.5px] border-blue-600 rounded-full p-1"
+            ? "w-fit h-fit border-[2px] border-blue-700 rounded-full p-1"
             : "w-fit h-fit border-[0.5px] border-gray-600 rounded-full p-1"
         }`}
       >
@@ -106,8 +106,8 @@ const CommanFilter = ({ uniqData, filterData, title, mobile }) => {
           <div
             className={`${
               filterData.size === uniqData[1].name
-                ? "w-[17px] h-[17px] border-[0.5px] b rounded-full bg-slate-500"
-                : "w-[17px] h-[17px] border-[0.5px] b rounded-full border-white"
+                ? "w-[17px] h-[17px] border-[0.5px] rounded-full bg-slate-500 opacity-80 "
+                : "w-[17px] h-[17px]   rounded-full "
             }  `}
             id={uniqData[1].name}
           />
@@ -115,8 +115,8 @@ const CommanFilter = ({ uniqData, filterData, title, mobile }) => {
           <div
             className={`${
               filterData.category === uniqData[1].name
-                ? "w-[17px] h-[17px] border-[0.5px] b rounded-full bg-slate-500"
-                : "w-[17px] h-[17px] border-[0.5px] b rounded-full border-white"
+                ? "w-[17px] h-[17px] border-[0.5px]  rounded-full bg-slate-500"
+                : "w-[17px] h-[17px]   rounded-full "
             }  `}
             id={uniqData[1].name}
           />

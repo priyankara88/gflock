@@ -2,19 +2,30 @@ import { useState } from "react";
 
 import { CiHeart } from "react-icons/ci";
 import FilterSection from "../FilterSection";
+import { ItemFetch } from "../../libs/shoppingitem";
 
 const HomeContainer = () => {
+  console.log("ItemFetch", ItemFetch);
+
   return (
     <div className="w-full px-[70px] mt-4">
       {/* container break into two parts  */}
       <div className={`w-full grid grid-cols-1 md:grid-cols-[20%_80%]  `}>
         <FilterSection />
         <div className="w-full bg-white ">
-          <div className="w-full p-4 grid gap-5 grid-cols-2 md:grid-cols-3 lg:grid-cols-4 ">
-            <Card />
-            <Card />
-            <Card />
-            <Card />
+          <div className="w-full  grid gap-5 grid-cols-2 md:grid-cols-3 lg:grid-cols-4 ">
+            {ItemFetch.map((ele, index) => {
+              return (
+                <Card
+                  key={ele.productId}
+                  img={ele.productImage}
+                  itemName={ele.productTitle}
+                  price={ele.productPrice}
+                  discountPrice={ele.productPrice}
+                  productColor={ele.productcolor}
+                />
+              );
+            })}
           </div>
         </div>
       </div>
@@ -24,11 +35,16 @@ const HomeContainer = () => {
 
 export default HomeContainer;
 
-const Card = () => {
+const Card = ({ key, img, itemName, price, discountPrice, productColor }) => {
   const [buttonflag, setbuttonFlag] = useState(false);
   const [heartflag, setHeartFlag] = useState(false);
+  const [selectColor, setSelectedColor] = useState("");
 
-  console.log("heartflag", heartflag);
+  console.log("productColor ele.productColor", productColor);
+
+  const ColorWiseDress = (value) => {
+    console.log("Target Value", value);
+  };
 
   return (
     <div className="w-full h-fit">
@@ -37,11 +53,7 @@ const Card = () => {
         onMouseLeave={() => setbuttonFlag(false)}
         className="w-full relative  "
       >
-        <img
-          className="object-contain"
-          src="https://lk-kellyfelder.s3.ap-southeast-1.amazonaws.com/gallery/5a50c1c513a74437baaf583d77810f3f7790ef05.jpg"
-          alt="img"
-        />
+        <img className="object-contain" src={img} alt="img" />
         <div className="w-full h-full absolute flex justify-end top-1 right-1 z-10">
           <div
             onMouseOver={() => setHeartFlag(true)}
@@ -69,20 +81,26 @@ const Card = () => {
           )}
         </div>
       </div>
-      <p className="mt-2">Nori Strappy Frill Dress</p>
+      <p className="mt-2">{itemName}</p>
       <p className="mt-1">
-        LKR 3136.50<span className="line-through">LKR 3690.50</span>
+        LKR {price}
+        <span className="line-through">LKR {discountPrice}</span>
       </p>
       <div className="w-full flex mt-2 gap-1 cursor-pointer">
-        <div className="w-[25px] h-[25px] flex rounded-full border-2  items-center justify-center">
-          <div className="w-[17px] h-[17px] rounded-full bg-green-500"></div>
-        </div>
-        <div className="w-[25px] h-[25px] flex rounded-full border-2  items-center justify-center">
-          <div className="w-[17px] h-[17px] rounded-full bg-amber-500"></div>
-        </div>
-        <div className="w-[25px] h-[25px] flex rounded-full border-2  items-center justify-center">
-          <div className="w-[17px] h-[17px] rounded-full bg-rose-800"></div>
-        </div>
+        {/* bg-green-500 */}
+        {productColor.map((ele, index) => {
+          return (
+            <div
+              key={index}
+              className="w-[25px] h-[25px] flex rounded-full border-2  items-center justify-center"
+            >
+              <div
+                key={ele.id}
+                className={`${ele.code} w-[17px] h-[17px] rounded-full`}
+              />
+            </div>
+          );
+        })}
       </div>
     </div>
   );

@@ -5,15 +5,18 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import FilterProvider from "./context/filterContext";
 import ColorProvider from "./context/ColorContext";
+import CurrancyProvider from "./context/Currancycontext";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <FilterProvider>
-      <ColorProvider>
-        <App />
-      </ColorProvider>
-    </FilterProvider>
+    <CurrancyProvider>
+      <FilterProvider>
+        <ColorProvider>
+          <App />
+        </ColorProvider>
+      </FilterProvider>
+    </CurrancyProvider>
   </React.StrictMode>
 );
 

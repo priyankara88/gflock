@@ -3,10 +3,9 @@ import { useState } from "react";
 import { CiHeart } from "react-icons/ci";
 import FilterSection from "../FilterSection";
 import { ItemFetch } from "../../libs/shoppingitem";
+import { useCurrence } from "../../context/Currancycontext";
 
 const HomeContainer = () => {
-  console.log("ItemFetch", ItemFetch);
-
   return (
     <div className="w-full px-[70px] mt-4">
       {/* container break into two parts  */}
@@ -40,8 +39,10 @@ const Card = ({ img, itemName, price, discountPrice, productColor }) => {
   const [heartflag, setHeartFlag] = useState(false);
   const [selectColor, setSelectedColor] = useState("");
   const [selectColorImg, setSelectedColorImg] = useState("");
+  const [CurrancyRate, setCurrancyRate, slectedCurrancy, setSlectedCurrancy] =
+    useCurrence();
 
-  console.log("productColor ele.productColor", productColor);
+  console.log("productColor ele.productColor", CurrancyRate[slectedCurrancy]);
 
   const ColorWiseDress = (value, img) => {
     setSelectedColor(value);
@@ -88,9 +89,13 @@ const Card = ({ img, itemName, price, discountPrice, productColor }) => {
         </div>
       </div>
       <p className="mt-2">{itemName}</p>
-      <p className="mt-1">
-        LKR {price}
-        <span className="line-through">LKR {discountPrice}</span>
+      <p className="mt-1 text-base">
+        {slectedCurrancy}
+        {(price * CurrancyRate[slectedCurrancy]).toFixed(2)}
+        <span className="line-through text-xs">
+          {slectedCurrancy}
+          {(discountPrice * CurrancyRate[slectedCurrancy]).toFixed(2)}
+        </span>
       </p>
       <div className="w-full flex mt-2 gap-1 cursor-pointer">
         {/* bg-green-500 */}

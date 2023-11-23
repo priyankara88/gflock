@@ -30,7 +30,7 @@ export const ItemFetch = [
         name: "Pink",
         code: "bg-pink-500",
         image:
-          "https://lk-kellyfelder.s3.ap-southeast-1.amazonaws.com/gallery/e420b9ae2040eaa6f79a6fc93a56fdf21987c28b.jpg",
+          "https://lk-kellyfelder.s3.ap-southeast-1.amazonaws.com/gallery/daae743a9cd10acbf3ce5df57ec8d6306f9adb98.jpg",
       },
       {
         id: 2,
@@ -59,9 +59,27 @@ export const ItemFetch = [
     productPrice: "7250.00",
     Size,
     productcolor: [
-      { name: "Pink", code: "bg-pink-500" },
-      { name: "Purple", code: "bg-purple-700" },
-      { name: "Red", code: "bg-red-700" },
+      {
+        id: 1,
+        name: "Pink",
+        code: "bg-pink-500",
+        image:
+          "https://lk-kellyfelder.s3.ap-southeast-1.amazonaws.com/gallery/daae743a9cd10acbf3ce5df57ec8d6306f9adb98.jpg",
+      },
+      {
+        id: 2,
+        name: "Purple",
+        code: "bg-purple-700",
+        image:
+          "https://lk-kellyfelder.s3.ap-southeast-1.amazonaws.com/gallery/713728ff78c61b87d83e46953a5347668b828e5d.jpg",
+      },
+      {
+        id: 3,
+        name: "Red",
+        code: "bg-red-700",
+        image:
+          "https://lk-kellyfelder.s3.ap-southeast-1.amazonaws.com/gallery/382d444b301a4a4916733f5bebdcbc2090efd2bf.jpg",
+      },
     ],
     productCategory: "Work Wear",
     productStock: "2",
@@ -75,9 +93,27 @@ export const ItemFetch = [
     productPrice: "6400.00",
     Size,
     productcolor: [
-      { name: "Pink", code: "bg-pink-500" },
-      { name: "Purple", code: "bg-purple-700" },
-      { name: "Red", code: "bg-red-700" },
+      {
+        id: 1,
+        name: "Pink",
+        code: "bg-pink-500",
+        image:
+          "https://lk-kellyfelder.s3.ap-southeast-1.amazonaws.com/gallery/daae743a9cd10acbf3ce5df57ec8d6306f9adb98.jpg",
+      },
+      {
+        id: 2,
+        name: "Purple",
+        code: "bg-purple-700",
+        image:
+          "https://lk-kellyfelder.s3.ap-southeast-1.amazonaws.com/gallery/713728ff78c61b87d83e46953a5347668b828e5d.jpg",
+      },
+      {
+        id: 3,
+        name: "Red",
+        code: "bg-red-700",
+        image:
+          "https://lk-kellyfelder.s3.ap-southeast-1.amazonaws.com/gallery/382d444b301a4a4916733f5bebdcbc2090efd2bf.jpg",
+      },
     ],
     productCategory: "Work Wear",
     productStock: "7",
@@ -91,9 +127,27 @@ export const ItemFetch = [
     productPrice: "7650.00",
     Size,
     productcolor: [
-      { name: "Pink", code: "bg-pink-500" },
-      { name: "Purple", code: "bg-purple-700" },
-      { name: "Red", code: "bg-red-700" },
+      {
+        id: 1,
+        name: "Pink",
+        code: "bg-pink-500",
+        image:
+          "https://lk-kellyfelder.s3.ap-southeast-1.amazonaws.com/gallery/daae743a9cd10acbf3ce5df57ec8d6306f9adb98.jpg",
+      },
+      {
+        id: 2,
+        name: "Purple",
+        code: "bg-purple-700",
+        image:
+          "https://lk-kellyfelder.s3.ap-southeast-1.amazonaws.com/gallery/713728ff78c61b87d83e46953a5347668b828e5d.jpg",
+      },
+      {
+        id: 3,
+        name: "Red",
+        code: "bg-red-700",
+        image:
+          "https://lk-kellyfelder.s3.ap-southeast-1.amazonaws.com/gallery/382d444b301a4a4916733f5bebdcbc2090efd2bf.jpg",
+      },
     ],
     productCategory: "Work Wear",
     productStock: "4",
@@ -107,9 +161,27 @@ export const ItemFetch = [
     productPrice: "10920.00",
     Size,
     productcolor: [
-      { name: "Pink", code: "bg-pink-500" },
-      { name: "Purple", code: "bg-purple-700" },
-      { name: "Red", code: "bg-red-700" },
+      {
+        id: 1,
+        name: "Pink",
+        code: "bg-pink-500",
+        image:
+          "https://lk-kellyfelder.s3.ap-southeast-1.amazonaws.com/gallery/daae743a9cd10acbf3ce5df57ec8d6306f9adb98.jpg",
+      },
+      {
+        id: 2,
+        name: "Purple",
+        code: "bg-purple-700",
+        image:
+          "https://lk-kellyfelder.s3.ap-southeast-1.amazonaws.com/gallery/713728ff78c61b87d83e46953a5347668b828e5d.jpg",
+      },
+      {
+        id: 3,
+        name: "Red",
+        code: "bg-red-700",
+        image:
+          "https://lk-kellyfelder.s3.ap-southeast-1.amazonaws.com/gallery/382d444b301a4a4916733f5bebdcbc2090efd2bf.jpg",
+      },
     ],
     productCategory: "Work Wear",
     productStock: "8",
@@ -123,9 +195,27 @@ export const ItemFetch = [
     productPrice: "3500.00",
     Size,
     productcolor: [
-      { name: "Pink", code: "bg-pink-500" },
-      { name: "Purple", code: "bg-purple-700" },
-      { name: "Red", code: "bg-red-700" },
+      {
+        id: 1,
+        name: "Pink",
+        code: "bg-pink-500",
+        image:
+          "https://lk-kellyfelder.s3.ap-southeast-1.amazonaws.com/gallery/daae743a9cd10acbf3ce5df57ec8d6306f9adb98.jpg",
+      },
+      {
+        id: 2,
+        name: "Purple",
+        code: "bg-purple-700",
+        image:
+          "https://lk-kellyfelder.s3.ap-southeast-1.amazonaws.com/gallery/713728ff78c61b87d83e46953a5347668b828e5d.jpg",
+      },
+      {
+        id: 3,
+        name: "Red",
+        code: "bg-red-700",
+        image:
+          "https://lk-kellyfelder.s3.ap-southeast-1.amazonaws.com/gallery/382d444b301a4a4916733f5bebdcbc2090efd2bf.jpg",
+      },
     ],
     productCategory: "Work Wear",
     productStock: "1",
@@ -139,9 +229,27 @@ export const ItemFetch = [
     productPrice: "9900.00",
     Size,
     productcolor: [
-      { name: "Pink", code: "bg-pink-500" },
-      { name: "Purple", code: "bg-purple-700" },
-      { name: "Red", code: "bg-red-700" },
+      {
+        id: 1,
+        name: "Pink",
+        code: "bg-pink-500",
+        image:
+          "https://lk-kellyfelder.s3.ap-southeast-1.amazonaws.com/gallery/daae743a9cd10acbf3ce5df57ec8d6306f9adb98.jpg",
+      },
+      {
+        id: 2,
+        name: "Purple",
+        code: "bg-purple-700",
+        image:
+          "https://lk-kellyfelder.s3.ap-southeast-1.amazonaws.com/gallery/713728ff78c61b87d83e46953a5347668b828e5d.jpg",
+      },
+      {
+        id: 3,
+        name: "Red",
+        code: "bg-red-700",
+        image:
+          "https://lk-kellyfelder.s3.ap-southeast-1.amazonaws.com/gallery/382d444b301a4a4916733f5bebdcbc2090efd2bf.jpg",
+      },
     ],
     productCategory: "Work Wear",
     productStock: "5",
@@ -155,9 +263,27 @@ export const ItemFetch = [
     productPrice: "8750.00",
     Size,
     productcolor: [
-      { name: "Pink", code: "bg-pink-500" },
-      { name: "Purple", code: "bg-purple-700" },
-      { name: "Red", code: "bg-red-700" },
+      {
+        id: 1,
+        name: "Pink",
+        code: "bg-pink-500",
+        image:
+          "https://lk-kellyfelder.s3.ap-southeast-1.amazonaws.com/gallery/daae743a9cd10acbf3ce5df57ec8d6306f9adb98.jpg",
+      },
+      {
+        id: 2,
+        name: "Purple",
+        code: "bg-purple-700",
+        image:
+          "https://lk-kellyfelder.s3.ap-southeast-1.amazonaws.com/gallery/713728ff78c61b87d83e46953a5347668b828e5d.jpg",
+      },
+      {
+        id: 3,
+        name: "Red",
+        code: "bg-red-700",
+        image:
+          "https://lk-kellyfelder.s3.ap-southeast-1.amazonaws.com/gallery/382d444b301a4a4916733f5bebdcbc2090efd2bf.jpg",
+      },
     ],
     productCategory: "Work Wear",
     productStock: "3",
@@ -171,9 +297,27 @@ export const ItemFetch = [
     productPrice: "6500.00",
     Size,
     productcolor: [
-      { name: "Pink", code: "bg-pink-500" },
-      { name: "Purple", code: "bg-purple-700" },
-      { name: "Red", code: "bg-red-700" },
+      {
+        id: 1,
+        name: "Pink",
+        code: "bg-pink-500",
+        image:
+          "https://lk-kellyfelder.s3.ap-southeast-1.amazonaws.com/gallery/daae743a9cd10acbf3ce5df57ec8d6306f9adb98.jpg",
+      },
+      {
+        id: 2,
+        name: "Purple",
+        code: "bg-purple-700",
+        image:
+          "https://lk-kellyfelder.s3.ap-southeast-1.amazonaws.com/gallery/713728ff78c61b87d83e46953a5347668b828e5d.jpg",
+      },
+      {
+        id: 3,
+        name: "Red",
+        code: "bg-red-700",
+        image:
+          "https://lk-kellyfelder.s3.ap-southeast-1.amazonaws.com/gallery/382d444b301a4a4916733f5bebdcbc2090efd2bf.jpg",
+      },
     ],
     productCategory: "Work Wear",
     productStock: "6",
@@ -187,9 +331,27 @@ export const ItemFetch = [
     productPrice: "5750.00",
     Size,
     productcolor: [
-      { name: "Pink", code: "bg-pink-500" },
-      { name: "Purple", code: "bg-purple-700" },
-      { name: "Red", code: "bg-red-700" },
+      {
+        id: 1,
+        name: "Pink",
+        code: "bg-pink-500",
+        image:
+          "https://lk-kellyfelder.s3.ap-southeast-1.amazonaws.com/gallery/daae743a9cd10acbf3ce5df57ec8d6306f9adb98.jpg",
+      },
+      {
+        id: 2,
+        name: "Purple",
+        code: "bg-purple-700",
+        image:
+          "https://lk-kellyfelder.s3.ap-southeast-1.amazonaws.com/gallery/713728ff78c61b87d83e46953a5347668b828e5d.jpg",
+      },
+      {
+        id: 3,
+        name: "Red",
+        code: "bg-red-700",
+        image:
+          "https://lk-kellyfelder.s3.ap-southeast-1.amazonaws.com/gallery/382d444b301a4a4916733f5bebdcbc2090efd2bf.jpg",
+      },
     ],
     productCategory: "Work Wear",
     productStock: "4",
@@ -203,9 +365,27 @@ export const ItemFetch = [
     productPrice: "4600.00",
     Size,
     productcolor: [
-      { name: "Pink", code: "bg-pink-500" },
-      { name: "Purple", code: "bg-purple-700" },
-      { name: "Red", code: "bg-red-700" },
+      {
+        id: 1,
+        name: "Pink",
+        code: "bg-pink-500",
+        image:
+          "https://lk-kellyfelder.s3.ap-southeast-1.amazonaws.com/gallery/daae743a9cd10acbf3ce5df57ec8d6306f9adb98.jpg",
+      },
+      {
+        id: 2,
+        name: "Purple",
+        code: "bg-purple-700",
+        image:
+          "https://lk-kellyfelder.s3.ap-southeast-1.amazonaws.com/gallery/713728ff78c61b87d83e46953a5347668b828e5d.jpg",
+      },
+      {
+        id: 3,
+        name: "Red",
+        code: "bg-red-700",
+        image:
+          "https://lk-kellyfelder.s3.ap-southeast-1.amazonaws.com/gallery/382d444b301a4a4916733f5bebdcbc2090efd2bf.jpg",
+      },
     ],
     productCategory: "Work Wear",
     productStock: "1",
@@ -219,9 +399,27 @@ export const ItemFetch = [
     productPrice: "3850.00",
     Size,
     productcolor: [
-      { name: "Pink", code: "bg-pink-500" },
-      { name: "Purple", code: "bg-purple-700" },
-      { name: "Red", code: "bg-red-700" },
+      {
+        id: 1,
+        name: "Pink",
+        code: "bg-pink-500",
+        image:
+          "https://lk-kellyfelder.s3.ap-southeast-1.amazonaws.com/gallery/daae743a9cd10acbf3ce5df57ec8d6306f9adb98.jpg",
+      },
+      {
+        id: 2,
+        name: "Purple",
+        code: "bg-purple-700",
+        image:
+          "https://lk-kellyfelder.s3.ap-southeast-1.amazonaws.com/gallery/713728ff78c61b87d83e46953a5347668b828e5d.jpg",
+      },
+      {
+        id: 3,
+        name: "Red",
+        code: "bg-red-700",
+        image:
+          "https://lk-kellyfelder.s3.ap-southeast-1.amazonaws.com/gallery/382d444b301a4a4916733f5bebdcbc2090efd2bf.jpg",
+      },
     ],
     productCategory: "Work Wear",
     productStock: "9",
@@ -235,9 +433,27 @@ export const ItemFetch = [
     productPrice: "13200.00",
     Size,
     productcolor: [
-      { name: "Pink", code: "bg-pink-500" },
-      { name: "Purple", code: "bg-purple-700" },
-      { name: "Red", code: "bg-red-700" },
+      {
+        id: 1,
+        name: "Pink",
+        code: "bg-pink-500",
+        image:
+          "https://lk-kellyfelder.s3.ap-southeast-1.amazonaws.com/gallery/daae743a9cd10acbf3ce5df57ec8d6306f9adb98.jpg",
+      },
+      {
+        id: 2,
+        name: "Purple",
+        code: "bg-purple-700",
+        image:
+          "https://lk-kellyfelder.s3.ap-southeast-1.amazonaws.com/gallery/713728ff78c61b87d83e46953a5347668b828e5d.jpg",
+      },
+      {
+        id: 3,
+        name: "Red",
+        code: "bg-red-700",
+        image:
+          "https://lk-kellyfelder.s3.ap-southeast-1.amazonaws.com/gallery/382d444b301a4a4916733f5bebdcbc2090efd2bf.jpg",
+      },
     ],
     productCategory: "Work Wear",
     productStock: "7",
@@ -251,9 +467,27 @@ export const ItemFetch = [
     productPrice: "7700.00",
     Size,
     productcolor: [
-      { name: "Pink", code: "bg-pink-500" },
-      { name: "Purple", code: "bg-purple-700" },
-      { name: "Red", code: "bg-red-700" },
+      {
+        id: 1,
+        name: "Pink",
+        code: "bg-pink-500",
+        image:
+          "https://lk-kellyfelder.s3.ap-southeast-1.amazonaws.com/gallery/daae743a9cd10acbf3ce5df57ec8d6306f9adb98.jpg",
+      },
+      {
+        id: 2,
+        name: "Purple",
+        code: "bg-purple-700",
+        image:
+          "https://lk-kellyfelder.s3.ap-southeast-1.amazonaws.com/gallery/713728ff78c61b87d83e46953a5347668b828e5d.jpg",
+      },
+      {
+        id: 3,
+        name: "Red",
+        code: "bg-red-700",
+        image:
+          "https://lk-kellyfelder.s3.ap-southeast-1.amazonaws.com/gallery/382d444b301a4a4916733f5bebdcbc2090efd2bf.jpg",
+      },
     ],
     productCategory: "Work Wear",
     productStock: "1",

@@ -12,7 +12,7 @@ const HomeContainer = () => {
       {/* container break into two parts  */}
       <div className={`w-full grid grid-cols-1 md:grid-cols-[20%_80%]  `}>
         <FilterSection />
-        <div className="w-full bg-white ">
+        <div className="w-full bg-white pl-4 ">
           <div className="w-full  grid gap-5 grid-cols-2 md:grid-cols-3 lg:grid-cols-4 ">
             {ItemFetch.map((ele, index) => {
               return (
@@ -35,15 +35,17 @@ const HomeContainer = () => {
 
 export default HomeContainer;
 
-const Card = ({ key, img, itemName, price, discountPrice, productColor }) => {
+const Card = ({ img, itemName, price, discountPrice, productColor }) => {
   const [buttonflag, setbuttonFlag] = useState(false);
   const [heartflag, setHeartFlag] = useState(false);
   const [selectColor, setSelectedColor] = useState("");
+  const [selectColorImg, setSelectedColorImg] = useState("");
 
   console.log("productColor ele.productColor", productColor);
 
-  const ColorWiseDress = (value) => {
-    console.log("Target Value", value);
+  const ColorWiseDress = (value, img) => {
+    setSelectedColor(value);
+    setSelectedColorImg(img);
   };
 
   return (
@@ -53,7 +55,11 @@ const Card = ({ key, img, itemName, price, discountPrice, productColor }) => {
         onMouseLeave={() => setbuttonFlag(false)}
         className="w-full relative  "
       >
-        <img className="object-contain" src={img} alt="img" />
+        <img
+          className="object-contain"
+          src={selectColor == "" ? img : selectColorImg}
+          alt="img"
+        />
         <div className="w-full h-full absolute flex justify-end top-1 right-1 z-10">
           <div
             onMouseOver={() => setHeartFlag(true)}
@@ -92,7 +98,12 @@ const Card = ({ key, img, itemName, price, discountPrice, productColor }) => {
           return (
             <div
               key={index}
-              className="w-[25px] h-[25px] flex rounded-full border-2  items-center justify-center"
+              className={`${
+                selectColor == ele.name
+                  ? "w-[25px] h-[25px] flex rounded-full border-2 border-blue-700  items-center justify-center"
+                  : "w-[25px] h-[25px] flex rounded-full border-2  items-center justify-center"
+              }`}
+              onClick={() => ColorWiseDress(ele.name, ele.image)}
             >
               <div
                 key={ele.id}

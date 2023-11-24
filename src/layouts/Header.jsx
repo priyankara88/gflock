@@ -8,6 +8,7 @@ import { TiArrowSortedUp } from "react-icons/ti";
 import { useState } from "react";
 import { useCurrence } from "../context/Currancycontext";
 import { CountryFlag } from "../libs/shoppingitem";
+import ShoppingCartModal from "../componant/mui/ShoppingCartModal";
 
 const MenueTitle = [
   {
@@ -29,6 +30,12 @@ const MenueTitle = [
 ];
 
 const Header = () => {
+  // Shopping Model
+  const [open, setOpen] = useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
+  //
+
   const [displayCurrency, setDisplayCurrency] = useState(false);
   const { pathname } = useLocation();
   const [CurrancyRate, setCurrancyRate, slectedCurrancy, setSlectedCurrancy] =
@@ -56,6 +63,7 @@ const Header = () => {
 
   return (
     <div className=" sticky top-0 left-0 w-full bg-black p-5 text-orange-500 z-[100]">
+      <ShoppingCartModal open={open} handleClose={handleClose} />
       <div className="flex w-full">
         {/* MEnue Left Side */}
         <div className="flex items-center gap-x-6">
@@ -144,7 +152,10 @@ const Header = () => {
             </div>
           </div>
           <div>
-            <BsCart3 className="text-[25px] cursor-pointer" />
+            <div onClick={handleOpen} className="w-full">
+              <BsCart3 className="text-[25px] cursor-pointer" />
+            </div>
+
             <div className="w-fit flex absolute rounded-full bg-red-600 text-white h-fit  pr-1 pl-1 -top-2 ml-4 justify-center items-center cursor-pointer">
               3
             </div>

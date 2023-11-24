@@ -89,11 +89,12 @@ const Card = ({ img, itemName, price, discountPrice, productColor }) => {
         </div>
       </div>
       <p className="mt-2">{itemName}</p>
-      <p className="mt-1 text-base">
+      <p className="mt-1 flex flex-col  md:flex-row text-base">
         {slectedCurrancy}
         {(price * CurrancyRate[slectedCurrancy]).toFixed(2)}
         <span className="line-through text-xs">
           {slectedCurrancy}
+
           {(discountPrice * CurrancyRate[slectedCurrancy]).toFixed(2)}
         </span>
       </p>

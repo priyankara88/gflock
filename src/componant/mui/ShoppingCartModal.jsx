@@ -51,7 +51,7 @@ const ShoppingCartModal = ({ open, handleClose }) => {
                   <p className="text-xl">Rolling Hills WW Dress</p>
                   <p className="text-lg">SKU : 23631200</p>
                   <div className="w-full flex flex-row ">
-                    <p>
+                    <p className="gap-2">
                       {slectedCurrancy}
                       {(CurrancyRate[slectedCurrancy] * 27 * Qty).toFixed(2)}
                     </p>

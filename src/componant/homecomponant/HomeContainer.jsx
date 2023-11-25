@@ -61,7 +61,7 @@ const Card = ({ img, itemName, price, discountPrice, productColor }) => {
           src={selectColor == "" ? img : selectColorImg}
           alt="img"
         />
-        <div className="w-full h-full absolute flex justify-end top-1 right-1 z-10">
+        <div className="w-full h-full absolute flex justify-end top-1 right-1">
           <div
             onMouseOver={() => setHeartFlag(true)}
             onMouseLeave={() => setHeartFlag(false)}
@@ -78,11 +78,21 @@ const Card = ({ img, itemName, price, discountPrice, productColor }) => {
         </div>
         <div className=" flex w-full h-full absolute top-0 left-0 flex-col items-center justify-end  ">
           {buttonflag === true ? (
-            <button className=" mb-10 px-5 py-1 bg-white rounded-md opacity-80 font-semibold ">
+            <button
+              onClick={() => {
+                console.log("CLick");
+              }}
+              className=" cursor-pointer mb-10 px-5 py-1 bg-red-500 rounded-md opacity-80 font-semibold "
+            >
               ADD TO BAG
             </button>
           ) : (
-            <button className=" hidden mb-10 px-5 py-1 bg-white rounded-md opacity-80 font-semibold ">
+            <button
+              onClick={() => {
+                console.log("CLick");
+              }}
+              className="cursor-pointer hidden mb-10 px-5 py-1 bg-red-500 rounded-md opacity-80 font-semibold "
+            >
               ADD TO BAG
             </button>
           )}

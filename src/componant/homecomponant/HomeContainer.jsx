@@ -18,6 +18,7 @@ const HomeContainer = () => {
               return (
                 <Card
                   key={ele.productId}
+                  itemId={ele.productId}
                   img={ele.productImage}
                   itemName={ele.productTitle}
                   price={ele.productPrice}
@@ -35,7 +36,14 @@ const HomeContainer = () => {
 
 export default HomeContainer;
 
-const Card = ({ img, itemName, price, discountPrice, productColor }) => {
+const Card = ({
+  itemId,
+  img,
+  itemName,
+  price,
+  discountPrice,
+  productColor,
+}) => {
   const [buttonflag, setbuttonFlag] = useState(false);
   const [heartflag, setHeartFlag] = useState(false);
   const [selectColor, setSelectedColor] = useState("");
@@ -45,9 +53,19 @@ const Card = ({ img, itemName, price, discountPrice, productColor }) => {
 
   const [Nav, setNav] = useState(true);
 
-  const [open, setOpen] = useState(false);
-  const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
+  const [open, setOpen] = useState({
+    open: false,
+    itemId: "",
+  });
+  const handleOpen = (itemId) =>
+    setOpen({
+      open: true,
+      itemId,
+    });
+  const handleClose = () =>
+    setOpen({
+      open: false,
+    });
 
   console.log("productColor ele.productColor", CurrancyRate[slectedCurrancy]);
 
@@ -85,10 +103,13 @@ const Card = ({ img, itemName, price, discountPrice, productColor }) => {
             />
           </div>
 
-          <div className=" flex w-full h-full absolute top-0 left-0 flex-col items-center justify-end  ">
+          <div
+            id={itemId}
+            className=" flex w-full h-full absolute top-0 left-0 flex-col items-center justify-end  "
+          >
             <button
               onClick={() => {
-                handleOpen();
+                handleOpen(itemId);
               }}
               onMouseOver={() => setNav(false)}
               onMouseLeave={() => {

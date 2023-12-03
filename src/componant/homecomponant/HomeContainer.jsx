@@ -4,6 +4,7 @@ import { CiHeart } from "react-icons/ci";
 import FilterSection from "../FilterSection";
 import { ItemFetch } from "../../libs/shoppingitem";
 import { useCurrence } from "../../context/Currancycontext";
+import ItemAddModel from "./ItemAddModel";
 
 const HomeContainer = () => {
   return (
@@ -42,6 +43,12 @@ const Card = ({ img, itemName, price, discountPrice, productColor }) => {
   const [CurrancyRate, setCurrancyRate, slectedCurrancy, setSlectedCurrancy] =
     useCurrence();
 
+  const [Nav, setNav] = useState(true);
+
+  const [open, setOpen] = useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
+
   console.log("productColor ele.productColor", CurrancyRate[slectedCurrancy]);
 
   const ColorWiseDress = (value, img) => {
@@ -51,7 +58,9 @@ const Card = ({ img, itemName, price, discountPrice, productColor }) => {
 
   return (
     <div className="w-full h-fit">
+      <ItemAddModel open={open} handleClose={handleClose} />
       <div
+        onClick={Nav ? () => console.log("ttttt") : null}
         onMouseOver={() => setbuttonFlag(true)}
         onMouseLeave={() => setbuttonFlag(false)}
         className="w-full relative  "
@@ -75,27 +84,25 @@ const Card = ({ img, itemName, price, discountPrice, productColor }) => {
               }`}
             />
           </div>
-        </div>
-        <div className=" flex w-full h-full absolute top-0 left-0 flex-col items-center justify-end  ">
-          {buttonflag === true ? (
+
+          <div className=" flex w-full h-full absolute top-0 left-0 flex-col items-center justify-end  ">
             <button
               onClick={() => {
-                console.log("CLick");
+                handleOpen();
               }}
-              className=" cursor-pointer mb-10 px-5 py-1 bg-red-500 rounded-md opacity-80 font-semibold "
+              onMouseOver={() => setNav(false)}
+              onMouseLeave={() => {
+                setNav(true);
+              }}
+              className={`${
+                buttonflag == true
+                  ? "block cursor-pointer mb-10 px-5 py-1 bg-red-500 rounded-md opacity-80 font-semibold"
+                  : "hidden cursor-pointer mb-10 px-5 py-1 bg-red-500 rounded-md opacity-80 font-semibold"
+              }   `}
             >
               ADD TO BAG
             </button>
-          ) : (
-            <button
-              onClick={() => {
-                console.log("CLick");
-              }}
-              className="cursor-pointer hidden mb-10 px-5 py-1 bg-red-500 rounded-md opacity-80 font-semibold "
-            >
-              ADD TO BAG
-            </button>
-          )}
+          </div>
         </div>
       </div>
       <p className="mt-2">{itemName}</p>

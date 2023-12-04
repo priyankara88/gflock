@@ -3,13 +3,28 @@ import { IoIosCloseCircleOutline } from "react-icons/io";
 import { CiRuler } from "react-icons/ci";
 import { CiHeart } from "react-icons/ci";
 import { ItemFetch } from "../../libs/shoppingitem";
+import { useColor } from "../../context/ColorContext";
+import { useRef } from "react";
 
 const ItemAddModel = ({ open, handleClose }) => {
+  const [filterColor, setFilterColor] = useColor();
+
+  const ImgMiddleData = useRef();
+  const ImgSlideData = useRef([]);
+
+  console.log("ImgSlideData", ImgSlideData);
+
+  const ImageChange = (id) => {
+    console.log("Clicked ID", id);
+  };
   return (
     <div>
       <Modal open={open.open} onClose={handleClose}>
         <div className="flex items-center justify-center mt-10 rounded-md">
-          <div className="p-10 w-[70%] h-[90%] flex flex-col items-center justify-center bg-white ">
+          <div
+            style={{ style: `${(window.innerHeight * 90) / 100}px` }}
+            className="p-10 w-[70%] flex flex-col items-center justify-center bg-white "
+          >
             <div className="w-full flex flex-col  ">
               <div className="w-full flex justify-end">
                 <IoIosCloseCircleOutline
@@ -20,27 +35,58 @@ const ItemAddModel = ({ open, handleClose }) => {
 
               <div className="w-full grid grid-cols-[20%_40%_40%]">
                 {/* side image */}
-                <div className="pl-4 pr-4 max-h-[500px] flex  flex-col overflow-y-auto bg-white">
-                  <SlideImage />
-                  <SlideImage />
-                  <SlideImage />
-                  <SlideImage />
+                <div
+                  style={{ height: `${(window.innerHeight * 70) / 100}px` }}
+                  className="pl-4 pr-4 w-full  flex  flex-col overflow-y-auto overflow-x-hidden  bg-white"
+                >
+                  {ItemFetch.map((ele, index) => {
+                    if (ele.productId == open.itemId) {
+                      return (
+                        <SlideImage
+                          key={index}
+                          Referance={ImgSlideData}
+                          Middle={ImgMiddleData}
+                          Image={ele.productcolor}
+                          ImageChange={ImageChange}
+                        />
+                      );
+                    }
+                  })}
                 </div>
                 {/* Middle Image */}
                 <div>
                   <div className="w-full h-fit">
-                    <img
-                      src="https://lk-kellyfelder.s3.ap-southeast-1.amazonaws.com/gallery/bcab2fffa72fe636de6a21639dc098ce2f567780.jpg"
-                      alt="test"
-                    />
+                    {ItemFetch.map((ele, index) => {
+                      if (ele.productId == open.itemId) {
+                        return (
+                          <img
+                            key={index}
+                            ref={ImgMiddleData}
+                            src={ele.productImage}
+                            alt={ele.productId}
+                          />
+                        );
+                      }
+                    })}
                   </div>
                 </div>
                 {/* Item details */}
                 <div className="pl-4 ">
                   <div className="w-full flex flex-col">
-                    <p className="text-3xl">Boho Nora Dress</p>
-                    <p className="text-lg">SKU : 23320500</p>
-                    <p className="text-2xl font-semibold mt-4">LKR 5690.00</p>
+                    {ItemFetch.map((ele, index) => {
+                      if (ele.productId == open.itemId) {
+                        return (
+                          <div key={index}>
+                            <p className="text-3xl">{ele.productDescription}</p>
+                            <p className="text-lg">{ele.productDescription}</p>
+                            <p className="text-2xl font-semibold mt-4">
+                              LKR {ele.productPrice}
+                            </p>
+                          </div>
+                        );
+                      }
+                    })}
+
                     <p>Color: Yellow</p>
                     <div className="mt-2 flex flex-row  gap-2">
                       <div className="cursor-pointer flex items-center justify-center w-6 h-6 p-[1px] rounded-full border-[0.5px] border-gray-500">
@@ -66,17 +112,24 @@ const ItemAddModel = ({ open, handleClose }) => {
                     </div>
 
                     <div className="flex gap-2">
+                      {/* {filterColor.Size.map((ele, index) => {
+                        if (ele.ID == open.itemId) {
+                          return (
+                            <div className="cursor-pointer mt-2 flex items-center justify-center w-14 h-8 border-[0.5px] border-gray-600">
+                              <p>{ele.name}</p>
+                            </div>
+                          );
+                        }
+                      })} */}
+
                       <div className="cursor-pointer mt-2 flex items-center justify-center w-14 h-8 border-[0.5px] border-gray-600">
-                        <p>uk2</p>
+                        <p>UK 2</p>
                       </div>
                       <div className="cursor-pointer mt-2 flex items-center justify-center w-14 h-8 border-[0.5px] border-gray-600">
-                        <p>uk2</p>
+                        <p>UK 5</p>
                       </div>
                       <div className="cursor-pointer mt-2 flex items-center justify-center w-14 h-8 border-[0.5px] border-gray-600">
-                        <p>uk2</p>
-                      </div>
-                      <div className="cursor-pointer mt-2 flex items-center justify-center w-14 h-8 border-[0.5px] border-gray-600">
-                        <p>uk2</p>
+                        <p>UK 8</p>
                       </div>
                     </div>
 
@@ -105,14 +158,30 @@ const ItemAddModel = ({ open, handleClose }) => {
 
 export default ItemAddModel;
 
-const SlideImage = () => {
+const SlideImage = ({ Image, ImageChange, Referance, Middle }) => {
+  console.log("sImage", Image.id);
   return (
-    <div className="cursor-pointer flex items-center justify-center p-1 hover:border-2 border-gray-500 ">
-      <img
-        src="https://lk-kellyfelder.s3.ap-southeast-1.amazonaws.com/gallery/a08194d2f332919354cca0d9e9f15783afa66737.jpg"
-        alt="image"
-        className="w-36 h-40"
-      />
-    </div>
+    <>
+      {Image.map((ele, index) => {
+        return (
+          <div
+            key={ele.id}
+            // onClick={() => ImageChange(ele.id)}
+
+            className="cursor-pointer flex items-center justify-center p-1 hover:border-2 border-gray-500 "
+          >
+            <img
+              ref={(ImgRef) => {
+                Referance.current[index] = ImgRef;
+              }}
+              //   onClick={(Middle.current = Referance)}
+              src={ele.image}
+              alt={ele.id}
+              className="w-36 h-40"
+            />
+          </div>
+        );
+      })}
+    </>
   );
 };

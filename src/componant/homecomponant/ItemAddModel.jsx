@@ -55,15 +55,19 @@ const ItemAddModel = ({ open, handleClose }) => {
                 </div>
                 {/* Middle Image */}
                 <div>
-                  <div className="w-full h-fit">
+                  <div className="w-full h-full">
                     {ItemFetch.map((ele, index) => {
                       if (ele.productId == open.itemId) {
                         return (
-                          <img
+                          <div
                             key={index}
-                            ref={ImgMiddleData}
-                            src={ele.productImage}
-                            alt={ele.productId}
+                            style={{
+                              width: "100%",
+                              height: "100%",
+                              backgroundImage: `url(${ele.productImage})`,
+                              backgroundSize: "cover",
+                            }}
+                            className="bg-no-repeat bg-cover bg-top"
                           />
                         );
                       }
@@ -167,19 +171,9 @@ const SlideImage = ({ Image, ImageChange, Referance, Middle }) => {
           <div
             key={ele.id}
             // onClick={() => ImageChange(ele.id)}
-
-            className="cursor-pointer flex items-center justify-center p-1 hover:border-2 border-gray-500 "
-          >
-            <img
-              ref={(ImgRef) => {
-                Referance.current[index] = ImgRef;
-              }}
-              //   onClick={(Middle.current = Referance)}
-              src={ele.image}
-              alt={ele.id}
-              className="w-36 h-40"
-            />
-          </div>
+            style={{ backgroundImage: `url(${ele.image})` }}
+            className="m-2 w-36 h-40 bg-cover bg-no-repeat bg-top cursor-pointer flex items-center justify-center p-1 hover:border-2 border-gray-500 "
+          />
         );
       })}
     </>

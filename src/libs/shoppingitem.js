@@ -109,6 +109,28 @@ export const ItemFetch = [
         image:
           "https://lk-kellyfelder.s3.ap-southeast-1.amazonaws.com/gallery/382d444b301a4a4916733f5bebdcbc2090efd2bf.jpg",
       },
+
+      {
+        id: 4,
+        name: "Red",
+        code: "bg-red-700",
+        image:
+          "https://lk-kellyfelder.s3.ap-southeast-1.amazonaws.com/gallery/382d444b301a4a4916733f5bebdcbc2090efd2bf.jpg",
+      },
+      {
+        id: 5,
+        name: "Red",
+        code: "bg-red-700",
+        image:
+          "https://lk-kellyfelder.s3.ap-southeast-1.amazonaws.com/gallery/382d444b301a4a4916733f5bebdcbc2090efd2bf.jpg",
+      },
+      {
+        id: 6,
+        name: "Red",
+        code: "bg-red-700",
+        image:
+          "https://lk-kellyfelder.s3.ap-southeast-1.amazonaws.com/gallery/382d444b301a4a4916733f5bebdcbc2090efd2bf.jpg",
+      },
     ],
     productCategory: "Work Wear",
     productStock: "5",

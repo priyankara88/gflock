@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import { CiHeart } from "react-icons/ci";
 import FilterSection from "../FilterSection";
@@ -73,6 +73,8 @@ const Card = ({
     setSelectedColor(value);
     setSelectedColorImg(img);
   };
+
+  const ADataFetch = () => {};
 
   return (
     <div className="w-full h-fit">

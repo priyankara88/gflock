@@ -12,6 +12,8 @@ const ItemAddModel = ({ open, handleClose }) => {
   const ImgMiddleData = useRef();
   const ImgSlideData = useRef([]);
 
+  // Access your API key as an environment variable (see "Set up your API key" above)
+
   console.log("ImgSlideData", ImgSlideData);
 
   const ImageChange = (id) => {
@@ -33,11 +35,13 @@ const ItemAddModel = ({ open, handleClose }) => {
                 />
               </div>
 
-              <div className="w-full grid grid-cols-[20%_40%_40%]">
+              <div className="w-full  grid grid-cols-[20%_40%_40%]">
                 {/* side image */}
                 <div
-                  style={{ height: `${(window.innerHeight * 70) / 100}px` }}
-                  className="pl-4 pr-4 w-full  flex  flex-col overflow-y-auto overflow-x-hidden  bg-white"
+                  style={{
+                    height: `${(window.innerHeight * 70) / 100}px`,
+                  }}
+                  className="pl-4 pr-4 w-full  flex  flex-col overflow-auto overflow-x-hidden  bg-white"
                 >
                   {ItemFetch.map((ele, index) => {
                     if (ele.productId == open.itemId) {
@@ -172,7 +176,7 @@ const SlideImage = ({ Image, ImageChange, Referance, Middle }) => {
             key={ele.id}
             // onClick={() => ImageChange(ele.id)}
             style={{ backgroundImage: `url(${ele.image})` }}
-            className="m-2 w-36 h-40 bg-cover bg-no-repeat bg-top cursor-pointer flex items-center justify-center p-1 hover:border-2 border-gray-500 "
+            className="m-2 w-36  h-28 min-w-full bg-cover bg-no-repeat bg-top cursor-pointer flex items-center justify-center p-10 hover:border-2 border-gray-500 "
           />
         );
       })}

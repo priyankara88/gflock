@@ -17,7 +17,7 @@ const ItemAddModel = ({ open, handleClose }) => {
   console.log("ImgSlideData", ImgSlideData);
 
   const ImageChange = (id) => {
-    console.log("Clicked ID", id);
+    console.log("Clicked ID", id.current);
   };
   return (
     <div>
@@ -41,7 +41,7 @@ const ItemAddModel = ({ open, handleClose }) => {
                   style={{
                     height: `${(window.innerHeight * 70) / 100}px`,
                   }}
-                  className="pl-4 pr-4 w-full  flex  flex-col overflow-auto overflow-x-hidden  bg-white"
+                  className="pl-4 pr-4 w-full max-h-full flex  flex-col overflow-auto overflow-x-hidden  bg-white"
                 >
                   {ItemFetch.map((ele, index) => {
                     if (ele.productId == open.itemId) {
@@ -64,6 +64,7 @@ const ItemAddModel = ({ open, handleClose }) => {
                       if (ele.productId == open.itemId) {
                         return (
                           <div
+                            ref={ImgMiddleData}
                             key={index}
                             style={{
                               width: "100%",
@@ -71,7 +72,7 @@ const ItemAddModel = ({ open, handleClose }) => {
                               backgroundImage: `url(${ele.productImage})`,
                               backgroundSize: "cover",
                             }}
-                            className="bg-no-repeat bg-cover bg-top"
+                            className=" w-full h-full bg-no-repeat bg-top bg-cover"
                           />
                         );
                       }
@@ -96,19 +97,17 @@ const ItemAddModel = ({ open, handleClose }) => {
                     })}
 
                     <p>Color: Yellow</p>
-                    <div className="mt-2 flex flex-row  gap-2">
-                      <div className="cursor-pointer flex items-center justify-center w-6 h-6 p-[1px] rounded-full border-[0.5px] border-gray-500">
-                        <div className="w-5 h-5 rounded-full bg-yellow-300" />
-                      </div>
+                    {/* {ItemFetch.map((ele, index) => {
+                      console.log("color", ele);
+                      return (
+                        <div className="mt-2 flex flex-row  gap-2">
+                          <div className="cursor-pointer flex items-center justify-center w-6 h-6 p-[1px] rounded-full border-[0.5px] border-gray-500">
+                            <div className="w-5 h-5 rounded-full bg-yellow-300" />
+                          </div>
+                        </div>
+                      );
+                    })} */}
 
-                      <div className="cursor-pointer flex items-center justify-center w-6 h-6 p-[1px] rounded-full border-[0.5px] border-gray-500">
-                        <div className="w-5 h-5 rounded-full bg-red-600" />
-                      </div>
-
-                      <div className="cursor-pointer flex items-center justify-center w-6 h-6 p-[1px] rounded-full border-[0.5px] border-gray-500">
-                        <div className="w-5 h-5 rounded-full bg-green-600" />
-                      </div>
-                    </div>
                     <div className="flex w-full gap-8 mt-4 ">
                       <p className="text-2xl">Size</p>
                       <div className="gap-1 flex text-lg">
@@ -172,11 +171,27 @@ const SlideImage = ({ Image, ImageChange, Referance, Middle }) => {
     <>
       {Image.map((ele, index) => {
         return (
-          <div
-            key={ele.id}
-            // onClick={() => ImageChange(ele.id)}
-            style={{ backgroundImage: `url(${ele.image})` }}
-            className="m-2 w-36  h-28 min-w-full bg-cover bg-no-repeat bg-top cursor-pointer flex items-center justify-center p-10 hover:border-2 border-gray-500 "
+          <img
+            key={index}
+            ref={(imgRef) => {
+              Referance.current[index] = imgRef;
+            }}
+            onClick={() => {
+              Middle.current.style = `background-image: url("${Referance.current[index].src}");`;
+
+              Image.forEach((_, k) => {
+                if (k === index) {
+                  Referance.current[k].style = "border: 2px solid #4f2e2e;";
+                } else {
+                  Referance.current[k].style = "border: 2px solid transparent;";
+                }
+              });
+            }}
+            src={ele.image}
+            alt="img"
+            className={` w-full object-contain mb-4 border-2 ${
+              index === 0 ? "border-[#4f2e2e]" : "border-transparent"
+            }`}
           />
         );
       })}

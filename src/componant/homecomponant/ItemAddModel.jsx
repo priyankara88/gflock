@@ -97,17 +97,35 @@ const ItemAddModel = ({ open, handleClose }) => {
                     })}
 
                     <p>Color: Yellow</p>
-                    {/* {ItemFetch.map((ele, index) => {
-                      console.log("color", ele);
-                      return (
-                        <div className="mt-2 flex flex-row  gap-2">
-                          <div className="cursor-pointer flex items-center justify-center w-6 h-6 p-[1px] rounded-full border-[0.5px] border-gray-500">
-                            <div className="w-5 h-5 rounded-full bg-yellow-300" />
-                          </div>
-                        </div>
-                      );
-                    })} */}
 
+                    <div className="mt-2 flex flex-row  gap-2">
+                      <div className="cursor-pointer flex items-center justify-center w-6 h-6 p-[1px] rounded-full border-[0.5px] border-gray-500">
+                        <div
+                          onClick={() => {
+                            ImgMiddleData.current.style = `background-image: url("https://lk-kellyfelder.s3.ap-southeast-1.amazonaws.com/gallery/daae743a9cd10acbf3ce5df57ec8d6306f9adb98.jpg");`;
+                          }}
+                          className="w-5 h-5 rounded-full bg-yellow-300"
+                        />
+                      </div>
+
+                      <div className="cursor-pointer flex items-center justify-center w-6 h-6 p-[1px] rounded-full border-[0.5px] border-gray-500">
+                        <div
+                          className="w-5 h-5 rounded-full bg-red-600"
+                          onClick={() => {
+                            ImgMiddleData.current.style = `background-image: url("https://lk-kellyfelder.s3.ap-southeast-1.amazonaws.com/gallery/713728ff78c61b87d83e46953a5347668b828e5d.jpg");`;
+                          }}
+                        />
+                      </div>
+
+                      <div className="cursor-pointer flex items-center justify-center w-6 h-6 p-[1px] rounded-full border-[0.5px] border-gray-500">
+                        <div
+                          className="w-5 h-5 rounded-full bg-green-600"
+                          onClick={() => {
+                            ImgMiddleData.current.style = `background-image: url("https://lk-kellyfelder.s3.ap-southeast-1.amazonaws.com/gallery/96beadb9f6a928774c63ca2eb03c69d3620f93da.jpg");`;
+                          }}
+                        />
+                      </div>
+                    </div>
                     <div className="flex w-full gap-8 mt-4 ">
                       <p className="text-2xl">Size</p>
                       <div className="gap-1 flex text-lg">
